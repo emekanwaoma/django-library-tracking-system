@@ -22,7 +22,7 @@ This application enables **library tracking** by allowing users to manage author
 
 ### 1️⃣ **Clone the Repository**
 ```sh
-git clone https://gitlab.com/search-atlas-interviews/django-library-tracking-system
+git clone https://github.com/emekanwaoma/django-library-tracking-system
 cd django-library-tracking-system
 ```
 
