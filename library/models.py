@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils import timezone
+from datetime import timedelta
 
 class Author(models.Model):
     first_name = models.CharField(max_length=100)
@@ -35,10 +37,14 @@ class Member(models.Model):
     def __str__(self):
         return self.user.username
 
+
+def get_due_date():
+    return timezone.now().date() + timedelta(days=14)
 class Loan(models.Model):
     book = models.ForeignKey(Book, related_name='loans', on_delete=models.CASCADE)
     member = models.ForeignKey(Member, related_name='loans', on_delete=models.CASCADE)
     loan_date = models.DateField(auto_now_add=True)
+    due_date = models.DateField(default=get_due_date)
     return_date = models.DateField(null=True, blank=True)
     is_returned = models.BooleanField(default=False)
 
